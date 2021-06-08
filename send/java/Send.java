@@ -1,5 +1,4 @@
-
-    import java.io.BufferedReader;
+import java.io.BufferedReader;
     import java.io.IOException;
     import java.io.InputStreamReader;
     import java.net.HttpURLConnection;
@@ -27,7 +26,7 @@
             String source_address = "&SOURCEADDR=" + URLEncoder.encode("Enter your sourcr address", "UTF-8");
             String message = "&MESSAGE=" + URLEncoder.encode("Enter your message here", "UTF-8");
 
-		    String url = "http://api.blsmsgw.com:8080/bin/send?USERNAME=" + username + "&PASSWORD=" + password + "&DESTADDR=" + destnum + "&SOURCEADDR=" + source_address + "&MESSAGE=" + message;
+		    String url = "https://api.blsmsgw.com:8443/bin/send?USERNAME=" + username + "&PASSWORD=" + password + "&DESTADDR=" + destnum + "&SOURCEADDR=" + source_address + "&MESSAGE=" + message;
 	
         try 
         {

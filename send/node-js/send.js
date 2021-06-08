@@ -1,21 +1,33 @@
-
-var request = require("request");
-
-url: 'http://api.blsmsgw.com:8080/bin/send?',
-qs:{
-        USERNAME: 'Enter your username',
-        PASSWORD: 'Enter your password',
-        DESTADDR: 'Enter your Destnation address',
-        MESSAGE: 'Enter your message',
-        format: 'json' 
-    },
-headers: {
-    'cache-control': 'no-cache'
-    } 
-};
-
-request(options, function (error, response, body) {
-    if (error) throw new Error(error);
-        console.log(body);
-    }
-);
+const qs = require("qs");
+const axios = require("axios");
+const https = require("https");
+function sendTest() {
+  axios
+    .post(
+      "https://api.blsmsgw.com:8443/bin/send?",
+      qs.stringify({
+        "USERNAME":"<ENTER USERNAME>",
+        "PASSWORD":"<ENTER PASSWORD>",
+        "DESTADDR":"<ENTER DESTINATION NUMBER>",
+        "SOURCEADDR":"<ENTER YOUR SOURCE ADDRESS>",
+        "CHARCODE":"0",
+        "MESSAGE":"<ENTER MESSAGE TO SEND>"
+      }),
+      {
+        headers: { "cache-control": "no-cache" },
+        httpsAgent: new https.Agent({
+          rejectUnauthorized: false,
+        }),
+      }
+    )
+    .then(
+      (response) => {
+        console.log(response);
+        return response;
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+}
+sendTest();

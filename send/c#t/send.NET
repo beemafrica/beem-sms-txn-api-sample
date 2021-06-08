@@ -1,4 +1,4 @@
- using System;
+using System;
     using Gtk;
     using System.IO;
     using System.Net;
@@ -25,7 +25,7 @@
             string destnum = "Enter your Destination number"; 
             string source_address = "";
             string message = "Enter your message here";
-            string url = "http://api.blsmsgw.com:8080/bin/send?USERNAME=" + username + "&PASSWORD=" + password + "&DESTADDR=" + destnum + "&SOURCEADDR=" + source_address + "&MESSAGE=" + message;
+            string url = "https://api.blsmsgw.com:8443/bin/send?USERNAME=" + username + "&PASSWORD=" + password + "&DESTADDR=" + destnum + "&SOURCEADDR=" + source_address + "&MESSAGE=" + message;
 
             StreamWriter myWriter = null;
             HttpWebRequest objRequest = (HttpWebRequest)WebRequest.Create(url);
