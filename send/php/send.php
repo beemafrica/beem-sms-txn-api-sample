@@ -17,7 +17,7 @@
         $posturl = "https://api.blsmsgw.com:8443/bin/send?USERNAME=".$username."&PASSWORD=".$password."&DESTADDR=".$destnum."&SOURCEADDR=".$source_address."&MESSAGE=".$message;
        // echo $posturl;
        // Setup cURL
-        $ch = curl_init($Url);
+        $ch = curl_init();              //passing the $Url variable here was unnecessary
         error_reporting(E_ALL);
         ini_set('display_errors', 1);
         curl_setopt($ch, CURLOPT_URL, $posturl);
@@ -28,11 +28,13 @@
         curl_setopt($ch, CURLOPT_TIMEOUT, 500); //tim
 
         $response = curl_exec($ch);
-        echo $response;
+        /* echo $response;
+                1. dumping results before verying positivity is illogical - ref ln:35
+                2. there is no need to dump the result twice - ref ln:39
+        */
         if($response === FALSE){
             echo $response;
-    
-        die(curl_error($ch));
+            die(curl_error($ch));
         }
         var_dump($response);
 ?>
